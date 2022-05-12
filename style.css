@@ -6,12 +6,12 @@
 }
 
 :root {
-  --hue: 200;
+  --hue: 0;
   --primary-color: hsla(var(--hue), 100%, 26%);
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
 
-  --brand-beige: hsl(39, 100%, 97%);
+  --brand-red: hsl(0, 100%, 98%, 1);
   --brand-light: hsl(calc(var(--hue) - 22), 23%, 89%);
   --brand-light-2: hsl(calc(var(--hue) + 10), 14%, 97%);
   --brand-dark: hsl(var(--hue), 100%, 14%);
@@ -44,7 +44,8 @@ body {
   background-color: var(--bg-light);
 }
 
-.wrapper {
+.wrapper,
+.wrapper-testimonials {
   width: min(50rem, 100%);
   margin-inline: auto;
   padding-inline: 2.4rem;
@@ -149,13 +150,32 @@ button.open-menu path[stroke*='#00856F'],
   stroke: var(--primary-color);
 }
 
-body.menu-expanded #navigation .logo path,
-#navigation.scroll .logo path {
-  fill: white;
+body.menu-expanded #navigation .wrapper .logo /*path*/,
+body.menu-expanded #navigation .wrapper .logo span /*path*/,
+#navigation.scroll  .wrapper .logo /*path*/,
+#navigation.scroll .wrapper  .logo span {
+  color: white;
+  /*fill: white;*/
 }
 
+/*
+#navigation.scroll .logo span {
+  font-weight: bold;
+}
+*/
 #navigation.scroll button.open-menu path[stroke*='#00856F'] {
   stroke: white;
+}
+
+nav#navigation .wrapper .logo,
+nav#navigation .wrapper .logo span {
+  text-decoration: none;
+  font-size: 2rem;
+  color: var(--headline);
+}
+
+nav#navigation .wrapper .logo span {
+  color: var(--primary-color);
 }
 
 /*=== NAVIGATION ========================================*/
@@ -280,8 +300,9 @@ body.menu-expanded button {
   z-index: 100;
 }
 
-body.menu-expanded .logo path {
-  fill: white;
+body.menu-expanded .logo /*path */ {
+  color: white;
+  /*fill: white;*/
 }
 
 body.menu-expanded button path {
@@ -332,7 +353,7 @@ body.menu-expanded button path {
   padding-block: 4rem;
   margin-inline: auto;
 
-  background-color: var(--brand-beige);
+  background-color: white;
   border: 1px solid var(--brand-light);
   border-radius: 0.6rem;
 
@@ -358,17 +379,21 @@ body.menu-expanded button path {
 }
 
 /*=== SERVICES ========================================*/
-#services header h2 {
+#services header h2,
+#menu-pizza header h2,
+#testimonials header h2 {
   margin-bottom: 6rem;
 }
 
-#services .cards {
+#services .cards,
+#menu-pizza .cards {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
 }
 
-#services .card {
+#services .card,
+#menu-pizza .card {
   padding: 2.4rem;
   text-align: left;
 
@@ -378,14 +403,108 @@ body.menu-expanded button path {
   border-radius: 0.6rem;
 }
 
-#services .card h3 {
+#services .card h3,
+#menu-pizza .card h3 {
   margin-block: 1.6rem;
+}
+
+/*=== MENU PIZZA ========================================*/
+
+#menu-pizza .card .button {
+  margin: 0;
+}
+
+#menu-pizza .button {
+  margin: 0 auto;
+}
+
+#menu-pizza p {
+  margin-bottom: 1.6rem;
+}
+
+#menu-pizza .card img {
+  border-radius: 1rem;
+}
+
+/*=== DEPOSITIONS ========================================*/
+
+#testimonials .content .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+#testimonials .content .cards .card {
+  background-color: var(--brand-light);
+  padding: 3.2rem;
+  text-align: left;
+  border-radius: 0.4rem;
+
+  width: 54.4rem;
+}
+
+#testimonials .content .cards .card svg path {
+  fill: var(--primary-color);
+}
+
+#testimonials .content .cards .card p {
+  margin-block: 2rem;
+}
+
+#testimonials .content .cards .card .user {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+#testimonials .content .cards .card h3 {
+  color: var(--primary-color);
+  font-style: normal;
+}
+
+#testimonials .content .cards .card img {
+  border-radius: 100rem;
+  height: 4.2rem;
+  width: 4.2rem;
+}
+
+#testimonials #brands {
+  margin-top: 16.1rem;
+}
+
+#testimonials #brands h4 {
+  color: var(--headline);
+  text-transform: none;
+
+  font-size: 2.4rem;
+  line-height: 3.1rem;
+
+  margin-bottom: 4.8rem;
+}
+
+#testimonials #brands .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4.2rem;
+}
+
+/* swiper */
+
+.swiper-slide {
+  height: auto;
+  padding: 4rem 1rem;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--primary-color);
 }
 
 /*=== ABOUT ========================================*/
 #about {
   text-align: left;
-  background-color: var(--brand-beige);
+  background-color: var(--brand-red);
 }
 
 #about header h2 {
@@ -400,6 +519,7 @@ body.menu-expanded button path {
 /*=== CONTACT ========================================*/
 #contact {
   text-align: left;
+  background-color: white;
 }
 
 #contact header {
@@ -435,13 +555,16 @@ footer .logo {
   margin-bottom: 2.4rem;
 }
 
-footer .logo svg {
+footer .logo /*svg*/ {
   width: 23.6rem;
   height: 3.1rem;
 }
 
-footer .logo path {
-  fill: white;
+footer .logo /*path */ {
+  color: white;
+  text-decoration: none;
+  font-size: 3rem;
+  /*fill: white;*/
 }
 
 footer p {
@@ -487,6 +610,10 @@ footer .social-links {
     display: grid;
   }
 
+  .wrapper-testimonials {
+    width: min(112rem, 100%);
+  }
+
   .col-a {
     grid-area: A;
   }
@@ -502,6 +629,10 @@ footer .social-links {
   section header h2 {
     font-size: 4rem;
     line-height: 5.2rem;
+  }
+
+  .col-b .image {
+    border-radius: 2rem;
   }
 
   /*=== NAVIGATION ========================================*/
@@ -630,7 +761,7 @@ footer .social-links {
     height: calc(96% - var(--nav-height));
   }
   #home {
-    padding-top: var(--nav-height);
+    padding-top: calc(8.1rem + var(--nav-height));
   }
 
   #home .wrapper {
@@ -671,6 +802,7 @@ footer .social-links {
 
   #home .button {
     margin: 0;
+    margin-bottom: 3rem;
   }
 
   #home img {
@@ -678,20 +810,32 @@ footer .social-links {
   }
 
   /*=== SERVICES ========================================*/
-  #services h2 {
+  #services h2,
+  #menu-pizza h2,
+  #testimonials h2 {
     width: 47rem;
     margin-inline: auto;
   }
 
-  #services .cards {
+  #services .cards,
+  #menu-pizza .cards {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 4rem;
   }
 
-  #services .card {
+  #services .card,
+  #menu-pizza .card {
     width: 30%;
     flex-grow: 1;
+  }
+
+  /*=== DEPOSITIONS ========================================*/
+
+  #testimonials .content .cards {
+    display: flex;
+    flex-direction: row;
+    gap: 3.2rem;
   }
 
   /*=== ABOUT ========================================*/
@@ -707,6 +851,11 @@ footer .social-links {
 
   #about .content p {
     margin-bottom: 0;
+  }
+
+  #testimonials #brands .content {
+    flex-direction: row;
+    gap: 5rem;
   }
 
   /*=== CONTACT ========================================*/

@@ -7,6 +7,8 @@ function onScroll() {
 
   activateMenuAtCurrentSection(home)
   activateMenuAtCurrentSection(services)
+  activateMenuAtCurrentSection(document.getElementById('menu-pizza'))
+  activateMenuAtCurrentSection(testimonials)
   activateMenuAtCurrentSection(about)
   activateMenuAtCurrentSection(contact)
 }
@@ -54,6 +56,16 @@ function showBackToTopButtonOnScroll() {
   }
 }
 
+/* Testimonials carousel slider swiper */
+const swiper = new Swiper('.swiper', {
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination'
+  },
+  mousewheel: true,
+  keyboard: true
+})
+
 function openMenu() {
   document.body.classList.add('menu-expanded')
 }
@@ -73,6 +85,17 @@ ScrollReveal({
   #services,
   #services header,
   #services .card,
+  #menu-pizza,
+  #menu-pizza header,
+  #menu-pizza .card,
+  #testimonials,
+  #testimonials header,
+  #testimonials .content,
+  #testimonials .cards,
   #about,
   #about header,
-  #about .content`)
+  #about .content,
+  #contact,
+  #contact header,
+  #contact .content,
+  #contact img`)
